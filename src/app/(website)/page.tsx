@@ -1,8 +1,19 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SignInButton } from "@clerk/nextjs";
-import { ArrowUpRight } from "lucide-react";
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
+import { ArrowUpRight, CheckIcon, SparklesIcon } from "lucide-react";
 import { ClerkIcon, StripIcon, NeonIcon, NextIcon, ShadcnIcon } from "./_icons";
+import { subscriptionTiersInOrder } from "../data/subscriptionTiers";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { formatCompactNumber } from "@/lib/formatter";
+import { ReactNode } from "react";
 
 export default function HomePage() {
   return (
@@ -53,8 +64,73 @@ export default function HomePage() {
         <h2 className="text-2xl text-center text-balance font-semibold mb-8">
           Pricing Software which pays for itself 20X over
         </h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl mx-auto"></div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl mx-auto">
+          {subscriptionTiersInOrder.map((tier) => (
+            <PricingCard key={tier.name} {...tier} />
+          ))}
+        </div>
       </section>
     </>
+  );
+}
+
+function PricingCard({
+  name,
+  priceInRupees,
+  maxNumberOfProducts,
+  maxNumberOfVisits,
+  canAccessAnalytics,
+  canCustomizeBanner,
+  canRemoveBranding,
+}: (typeof subscriptionTiersInOrder)[number]) {
+  const isMostPopular = name === "Standard";
+  return (
+    <Card>
+      <CardHeader>
+        <div className="text-accent font-semibold mb-4">{name}</div>
+        <CardTitle className="text-xl font-bold">
+          ₹{priceInRupees} /mo
+        </CardTitle>
+        <CardDescription>
+          {formatCompactNumber(maxNumberOfVisits)} Pricing Page Visits /mo
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <SignUpButton>
+          <Button
+            variant={isMostPopular ? "accent" : "default"}
+            className="w-full rounded-xl text-lg"
+          >
+            {isMostPopular ? <SparklesIcon /> : null}
+            Get Started
+          </Button>
+        </SignUpButton>
+      </CardContent>
+      <CardFooter className="flex flex-col items-start gap-2">
+        <Features className="font-bold">
+          {maxNumberOfProducts}{" "}
+          {maxNumberOfProducts === 1 ? "Product" : "Products"}
+        </Features>
+        <Features>Deals Discounts</Features>
+        {canAccessAnalytics && <Features>Advanced analytics</Features>}
+        {canRemoveBranding && <Features>Remove Global Deals branding</Features>}
+        {canCustomizeBanner && <Features>Customize Banners</Features>}
+      </CardFooter>
+    </Card>
+  );
+}
+
+function Features({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`flex items-center gap-2 ${className}`}>
+      <CheckIcon className="size-4 stroke-accent rounded-full bg-accent/15 p-0.5" />
+      {children}
+    </div>
   );
 }
