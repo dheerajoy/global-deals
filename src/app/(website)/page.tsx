@@ -56,17 +56,17 @@ export default function HomePage() {
         <h2 className="text-2xl text-center text-balance font-semibold mb-8">
           Pricing Software which pays for itself 20X over
         </h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl mx-auto">
           {subscriptionTiersInOrder.map((tier) => (
             <PricingCard key={tier.name} {...tier} />
           ))}
         </div>
       </section>
-      <footer className="container flex flex-col sm:flex-row py-10 px-8 gap-10 items-start justify-between">
+      <footer className="container flex flex-col sm:flex-row py-16 gap-10 items-start justify-between">
         <Link href={"/"}>
           <BrandLogo />
         </Link>
-        <div className="flex flex-col sm:flex-row gap-8">
+        <div className="flex flex-col sm:flex-row gap-10 sm:gap-16">
           <div className="flex flex-col gap-6">
             <FooterLinkGroup
               title="Help"
