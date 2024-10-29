@@ -4,7 +4,8 @@ import { SignInButton } from "@clerk/nextjs";
 import { ArrowUpRight } from "lucide-react";
 import { ClerkIcon, StripIcon, NeonIcon, NextIcon, ShadcnIcon } from "./_icons";
 import { subscriptionTiersInOrder } from "../data/subscriptionTiers";
-import { PricingCard } from "./_components";
+import { FooterLinkGroup, PricingCard } from "./_components";
+import { BrandLogo } from "@/components/common/BrangLogo";
 
 export default function HomePage() {
   return (
@@ -61,6 +62,84 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      <footer className="container flex flex-col sm:flex-row py-10 px-8 gap-10 items-start justify-between">
+        <Link href={"/"}>
+          <BrandLogo />
+        </Link>
+        <div className="flex flex-col sm:flex-row gap-8">
+          <div className="flex flex-col gap-6">
+            <FooterLinkGroup
+              title="Help"
+              links={[
+                { label: "PPP Discounts", href: "#" },
+                { label: "Discount API", href: "#" },
+                { label: "Holiday discounts", href: "#" },
+              ]}
+            />
+            <FooterLinkGroup
+              title="Solutions"
+              links={[
+                { label: "Newsletter", href: "#" },
+                { label: "SaaS Business", href: "#" },
+                { label: "Online Courses", href: "#" },
+                { label: "Info products", href: "#" },
+              ]}
+            />
+          </div>
+          <div className="flex flex-col gap-6">
+            <FooterLinkGroup
+              title="Features"
+              links={[
+                { label: "Holiday discounts", href: "#" },
+                { label: "PPP Discounts", href: "#" },
+                { label: "Time based discounts", href: "#" },
+                { label: "Benefits of geographical pricing?", href: "#" },
+              ]}
+            />
+            <FooterLinkGroup
+              title="Tools"
+              links={[
+                { label: "Salary converter", href: "#" },
+                { label: "Coupon generator", href: "#" },
+                { label: "Stripe app", href: "#" },
+              ]}
+            />
+            <FooterLinkGroup
+              title="Company"
+              links={[
+                { label: "Affiliate", href: "#" },
+                { label: "Twitter", href: "#" },
+                { label: "Terms of Service", href: "#" },
+                { label: "Privacy", href: "#" },
+              ]}
+            />
+          </div>
+          <div className="flex flex-col gap-6">
+            <FooterLinkGroup
+              title="Integrations"
+              links={[
+                { label: "Lemon Squeezy", href: "#" },
+                { label: "Gumroad", href: "#" },
+                { label: "Stripe", href: "#" },
+                { label: "ChargeBee", href: "#" },
+                { label: "Whop", href: "#" },
+                { label: "Paddle", href: "#" },
+              ]}
+            />
+            <FooterLinkGroup
+              title="Tutorials"
+              links={[
+                { label: "Any website", href: "#" },
+                { label: "Kajabi", href: "#" },
+                { label: "Podia", href: "#" },
+                { label: "Circle.so", href: "#" },
+                { label: "Beehiiv", href: "#" },
+                { label: "Framer", href: "#" },
+              ]}
+            />
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
