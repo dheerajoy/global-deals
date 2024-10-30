@@ -2,13 +2,7 @@ import { ComponentProps } from "react";
 
 export function NextIcon(svgProps: ComponentProps<"svg">) {
   return (
-    <svg
-      aria-label="Next.js logotype"
-      height="18"
-      role="img"
-      viewBox="0 0 394 79"
-      {...svgProps}
-    >
+    <svg role="img" viewBox="0 0 394 79" {...svgProps}>
       <path
         d="M261.919 0.0330722H330.547V12.7H303.323V79.339H289.71V12.7H261.919V0.0330722Z"
         fill="rgb(255, 255, 255)"

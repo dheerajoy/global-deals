@@ -2,7 +2,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SignInButton } from "@clerk/nextjs";
 import { ArrowUpRight } from "lucide-react";
-import { ClerkIcon, StripIcon, NeonIcon, NextIcon, ShadcnIcon } from "./_icons";
+import {
+  ClerkIcon,
+  StripIcon,
+  NeonIcon,
+  NextIcon,
+  ShadcnIcon,
+  DrizzleIcon,
+} from "./_icons";
 import { subscriptionTiersInOrder } from "../data/subscriptionTiers";
 import { FooterLinkGroup, PricingCard } from "./_components";
 import { BrandLogo } from "@/components/common/BrangLogo";
@@ -29,7 +36,7 @@ export default function HomePage() {
           <h2 className="text-2xl text-center text-balance font-semibold">
             Build Upon Latest Technology
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-10">
             <Link href={"https://nextjs.org"}>
               <NextIcon className="w-24 h-full" />
             </Link>
@@ -48,6 +55,9 @@ export default function HomePage() {
             </Link>
             <Link href={"https://stripe.com/"}>
               <StripIcon className="w-20 h-full" />
+            </Link>
+            <Link href={"https://orm.drizzle.team/"}>
+              <DrizzleIcon className="w-22 h-full" />
             </Link>
           </div>
         </div>
